@@ -121,7 +121,7 @@ export default defineConfig({
            ]
          },
          {
-           text: 'VPM 包管理器',
+           text: 'Vix 包管理器',
            collapsed: true,
            items: [
              { text: 'VPM 主页', link: '/vpm/zh_CN/' },
@@ -131,7 +131,7 @@ export default defineConfig({
            ]
          },
          {
-           text: 'VPM Package Manager',
+           text: 'Vix Package Manager',
            collapsed: true,
            items: [
              { text: 'VPM Main Page', link: '/vpm/en/' },
@@ -180,7 +180,7 @@ export default defineConfig({
        ],
        '/vpm/': [
          {
-           text: 'VPM 包管理器',
+           text: 'Vix 包管理器',
            collapsed: true,
            items: [
              { text: 'VPM 主页', link: '/vpm/zh-CN/' },
@@ -190,7 +190,7 @@ export default defineConfig({
            ]
          },
          {
-           text: 'VPM Package Manager',
+           text: 'Vix Package Manager',
            collapsed: true,
            items: [
              { text: 'VPM Main Page', link: '/vpm/en/' },
@@ -202,7 +202,7 @@ export default defineConfig({
        ],
        '/vpm/en/': [
          {
-           text: 'VPM Package Manager',
+           text: 'Vix Package Manager',
            collapsed: true,
            items: [
              { text: 'What is VPM?', link: '/vpm/en/what-is-vpm' },
@@ -213,7 +213,7 @@ export default defineConfig({
        ],
        '/vpm/zh_CN/': [
          {
-           text: 'VPM 包管理器',
+           text: 'Vix 包管理器',
            collapsed: true,
            items: [
              { text: '什么是 VPM？', link: '/vpm/zh_CN/what-is-vpm' },
