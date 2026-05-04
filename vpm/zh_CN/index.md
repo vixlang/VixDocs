@@ -1,4 +1,4 @@
-![VPM logo](/assets/vpm-logo.png)
+<!-- ![VPM logo](/assets/vpm-logo.png) -->
 
 # VPM - Vix 包管理器#
 
