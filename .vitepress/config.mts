@@ -68,7 +68,7 @@ export default defineConfig({
     },
     externalLinkIcon: true,
     editLink: {
-      pattern: 'https://github.com/sxxyrry/docssCode/edit/main/Bulletin/:path',
+      pattern: 'https://github.com/vixlang/VixDocs/edit/main/:path',
       text: '在 Github 上编辑此页'
     },
     sidebarMenuLabel: '菜单',
@@ -79,8 +79,6 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
   nav: [
        { text: '首页', link: '/' },
-       { text: '回到文档汇总', link: '/back/' },
-       { text: '描述（概览）', link: '/zh/overview' },
        { text: 'Vix 语言', link: '/zh_CN/what-is-vix' },
        { text: 'Vix Lang', link: '/en/what-is-vix' },
      ],
@@ -136,7 +134,7 @@ export default defineConfig({
      ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/TTHSDownloader/TTHSDNext' }
+      { icon: 'github', link: 'https://github.com/vixlang' }
     ]
   }
   ,

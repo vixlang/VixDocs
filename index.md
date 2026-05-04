@@ -100,17 +100,17 @@ fn main() -> i32 {
 
 ##  文档
 
-- [CONTRIBUTING.md](Docs/zh_CN/CONTRIBUTING.md) —— 贡献指南，如何参与项目开发
-- [control-flow.md](Docs/zh_CN/control-flow.md) —— 控制流语句（if、循环等）的语法与用法
-- [functions.md](Docs/zh_CN/functions.md) —— 函数定义、调用、泛型等特性
-- [getting-started.md](Docs/zh_CN/getting-started.md) —— 快速入门指南，安装与第一个程序
-- [modules.md](Docs/zh_CN/modules.md) —— 模块系统，导入与导出规则
-- [pointers.md](Docs/zh_CN/pointers.md) —— 指针的声明、解引用、运算及使用示例
-- [stdlib.md](Docs/zh_CN/stdlib.md) —— 标准库提供的函数与常用模块
-- [structs.md](Docs/zh_CN/structs.md) —— 结构体定义、实例化、字段访问
-- [syntax.md](Docs/zh_CN/syntax.md) —— 完整语法参考，包含 EBNF 形式
-- [types.md](Docs/zh_CN/types.md) —— 类型系统：基本类型、泛型、联合类型等
-- [what-is-vix.md](Docs/zh_CN/what-is-vix.md) —— Vix 语言简介与设计目标
+- [CONTRIBUTING.md](/zh_CN/CONTRIBUTING.md) —— 贡献指南，如何参与项目开发
+- [control-flow.md](/zh_CN/control-flow.md) —— 控制流语句（if、循环等）的语法与用法
+- [functions.md](/zh_CN/functions.md) —— 函数定义、调用、泛型等特性
+- [getting-started.md](/zh_CN/getting-started.md) —— 快速入门指南，安装与第一个程序
+- [modules.md](/zh_CN/modules.md) —— 模块系统，导入与导出规则
+- [pointers.md](/zh_CN/pointers.md) —— 指针的声明、解引用、运算及使用示例
+- [stdlib.md](/zh_CN/stdlib.md) —— 标准库提供的函数与常用模块
+- [structs.md](/zh_CN/structs.md) —— 结构体定义、实例化、字段访问
+- [syntax.md](/zh_CN/syntax.md) —— 完整语法参考，包含 EBNF 形式
+- [types.md](/zh_CN/types.md) —— 类型系统：基本类型、泛型、联合类型等
+- [what-is-vix.md](/zh_CN/what-is-vix.md) —— Vix 语言简介与设计目标
 
 > 提示：如果你只想从零开始跑通一次编译 + 运行，建议先看 [getting-started.md](Docs/zh_CN/getting-started.md)。
 
