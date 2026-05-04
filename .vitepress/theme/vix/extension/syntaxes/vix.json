@@ -1,0 +1,349 @@
+{
+  "fileTypes": [
+    "vix"
+  ],
+  "name": "Vix",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#brackets"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#variables"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.vix",
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.vix"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "include": "#commentTODO"
+            }
+          ]
+        },
+        {
+          "name": "comment.block.documentation.vix",
+          "begin": "/\\*\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.vix"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.end.vix"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#commentTODO"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        },
+        {
+          "name": "comment.block.vix",
+          "begin": "/\\*(?!\\*)",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.vix"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.end.vix"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#commentTODO"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "commentTODO": {
+      "patterns": [
+        {
+          "match": "\\b(TODO|FIXME|NOTE|BUG|XXX|IDEA|HACK|WARNING)\\b",
+          "name": "markup.todo.vix"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(extern)\\b",
+          "name": "keyword.control.vix storage.modifier.extern.vix"
+        },
+        {
+          "match": "\\b(fn)\\b",
+          "name": "storage.type.function.vix"
+        },
+        {
+          "match": "\\b(mut)\\b",
+          "name": "storage.modifier.vix"
+        },
+        {
+          "match": "\\b(struct|obj|meth|field|impl|as|public|for|while|if|elif|else|return|break|continue|in)\\b",
+          "name": "keyword.control.vix"
+        },
+        {
+          "match": "\\b(true|false)\\b",
+          "name": "constant.language.boolean.vix"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.vix",
+          "patterns": [
+            {
+              "match": "\\\\(n|t|r|\\\\|\"|')",
+              "name": "constant.character.escape.vix"
+            },
+            {
+              "match": "%[0-9.-]*[dfFeEgGxXoosScclLn]",
+              "name": "constant.other.placeholder.vix"
+            }
+          ]
+        },
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.vix",
+          "patterns": [
+            {
+              "match": "\\\\(n|t|r|\\\\|\"|')",
+              "name": "constant.character.escape.vix"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b([0-9]+)\\b",
+          "name": "constant.numeric.integer.vix"
+        },
+        {
+          "match": "\\b([0-9]*\\.[0-9]+)\\b",
+          "name": "constant.numeric.float.vix"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": "(->)",
+          "name": "keyword.operator.arrow.vix"
+        },
+        {
+          "match": "(&)",
+          "name": "keyword.operator.address.vix"
+        },
+        {
+          "match": "(@)",
+          "name": "keyword.operator.at.vix"
+        },
+        {
+          "match": "(\\*)",
+          "name": "keyword.operator.multiplication.vix"
+        },
+        {
+          "match": "(\\+|\\-|\\/|%|==|!=|<|>|<=|>=|&&|\\|\\||!|=|\\+=|\\-=|\\*=|\\/=)",
+          "name": "keyword.operator.arithmetic.vix"
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "match": "[{}]",
+          "name": "meta.brace.curly.vix"
+        },
+        {
+          "match": "[\\[\\]]",
+          "name": "meta.brace.square.vix"
+        },
+        {
+          "match": "[()]",
+          "name": "meta.brace.round.vix"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "begin": "\\b(extern)\\s+(\"[^\"]*\")\\s*\\{",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.vix storage.modifier.extern.vix"
+            },
+            "2": {
+              "name": "string.quoted.double.vix"
+            }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "meta.brace.curly.vix"
+            }
+          },
+          "name": "meta.extern-block.vix",
+          "patterns": [
+            {
+              "include": "#extern-functions"
+            }
+          ]
+        },
+        {
+          "begin": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\([^)]*\\))?",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.function.vix keyword.declaration.vix"
+            },
+            "2": {
+              "name": "entity.name.function.vix support.function.vix"
+            },
+            "3": {
+              "name": "meta.brace.round.vix"
+            }
+          },
+          "end": "([{]|$)",
+          "endCaptures": {
+            "1": {
+              "name": "meta.brace.curly.vix"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#function-content"
+            }
+          ]
+        },
+        {
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+          "name": "entity.name.function.vix"
+        }
+      ]
+    },
+    "extern-functions": {
+      "patterns": [
+        {
+          "match": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\([^)]*\\)(?:\\s*->\\s*[a-zA-Z_][a-zA-Z0-9_]*)?",
+          "captures": {
+            "1": {
+              "name": "storage.type.function.vix keyword.declaration.vix"
+            },
+            "2": {
+              "name": "entity.name.function.vix support.function.vix"
+            }
+          }
+        }
+      ]
+    },
+    "function-content": {
+      "patterns": [
+        {
+          "include": "#function-parameters"
+        },
+        {
+          "include": "#types"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#brackets"
+        }
+      ]
+    },
+    "function-parameters": {
+      "patterns": [
+        {
+          "match": "\\b(mut)\\b",
+          "name": "storage.modifier.vix"
+        },
+        {
+          "match": "(&)",
+          "name": "keyword.operator.address.vix"
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:)\\s*([a-zA-Z_][a-zA-Z0-9_]*)?\\b",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.vix"
+            },
+            "2": {
+              "name": "punctuation.separator.vix"
+            },
+            "3": {
+              "name": "storage.type.vix"
+            }
+          }
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "match": "\\b(i8|i16|i32|i64|u8|u16|u32|u64|f32|f64|string|bool|void)\\b",
+          "name": "storage.type.vix"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?![.\\w])(?!\\s*[*/])",
+          "name": "variable.other.vix"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.vix"
+}

@@ -1,0 +1,20 @@
+{
+  "iconDefinitions": {
+    "_file_vix": {
+      "iconPath": "../images/logo.png"
+    }
+  },
+  "fileExtensions": {
+    "vix": "_file_vix"
+  },
+  "fileNames": {
+    "logo.png": "_file_vix"
+  },
+  "folder": "_folder",
+  "folderExpanded": "_folder_open",
+  "rootFolder": "_root_folder",
+  "rootFolderExpanded": "_root_folder_open",
+  "languageIds": {
+    "vix": "_file_vix"
+  }
+}

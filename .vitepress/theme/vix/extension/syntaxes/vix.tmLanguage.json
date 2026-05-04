@@ -1,0 +1,72 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "vix",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#extern"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.vix",
+				"match": "\\b(if|while|for|return|extern)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.vix",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.vix",
+					"match": "\\\\(n|t|r|\\\\|\"|')"
+				},
+				{
+					"name": "constant.other.placeholder.vix",
+					"match": "%[0-9.-]*[dfFeEgGxXoosScclLn]"
+				}
+			]
+		},
+		"extern": {
+			"name": "meta.extern-block.vix",
+			"begin": "\\b(extern)\\s+(\"[^\"]*\")\\s*\\{",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.vix storage.modifier.extern.vix"
+				},
+				"2": {
+					"name": "string.quoted.double.vix"
+				}
+			},
+			"end": "\\}",
+			"patterns": [
+				{
+					"include": "#extern-functions"
+				}
+			]
+		},
+		"extern-functions": {
+			"patterns": [
+				{
+					"match": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\([^)]*\\)(?:\\s*->\\s*[a-zA-Z_][a-zA-Z0-9_]*)?",
+					"captures": {
+						"1": {
+							"name": "storage.type.function.vix keyword.declaration.vix"
+						},
+						"2": {
+							"name": "entity.name.function.vix support.function.vix"
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.vix"
+}

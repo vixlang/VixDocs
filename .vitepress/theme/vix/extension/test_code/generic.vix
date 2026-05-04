@@ -1,0 +1,10 @@
+extern "C"
+{
+    fn printf(fmt:ptr , ...) ->i32
+}
+fn main() ->i32
+{
+    a = 10
+    printf("hello world %d\n", a);
+    return 0;
+}

@@ -1,0 +1,185 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const node_1 = require("vscode-languageserver/node");
+const vscode_languageserver_textdocument_1 = require("vscode-languageserver-textdocument");
+// 创建连接
+const connection = (0, node_1.createConnection)(node_1.ProposedFeatures.all);
+// 创建文档管理器
+const documents = new node_1.TextDocuments(vscode_languageserver_textdocument_1.TextDocument);
+let hasConfigurationCapability = false;
+let hasWorkspaceFolderCapability = false;
+let hasDiagnosticRelatedInformationCapability = false;
+connection.onInitialize((params) => {
+    const capabilities = params.capabilities;
+    // 检查客户端是否支持配置功能
+    hasConfigurationCapability = !!(capabilities.workspace && !!capabilities.workspace.configuration);
+    // 检查客户端是否支持工作区文件夹功能
+    hasWorkspaceFolderCapability = !!(capabilities.workspace && !!capabilities.workspace.workspaceFolders);
+    // 检查客户端是否支持相关诊断信息
+    hasDiagnosticRelatedInformationCapability = !!(capabilities.textDocument &&
+        capabilities.textDocument.publishDiagnostics &&
+        capabilities.textDocument.publishDiagnostics.relatedInformation);
+    return {
+        capabilities: {
+            textDocumentSync: node_1.TextDocumentSyncKind.Incremental,
+            completionProvider: {
+                resolveProvider: true,
+                triggerCharacters: ['.']
+            },
+            diagnosticProvider: {
+                documentSelector: [{ scheme: 'file', language: 'vix' }],
+                interFileDependencies: false,
+                workspaceDiagnostics: false
+            }
+        }
+    };
+});
+connection.onInitialized(() => {
+    if (hasConfigurationCapability) {
+        connection.client.register(node_1.DidChangeConfigurationNotification.type, {
+            section: 'vix'
+        });
+    }
+    if (hasWorkspaceFolderCapability) {
+        connection.workspace.onDidChangeWorkspaceFolders((_event) => {
+            connection.console.log('Workspace folder change event received.');
+        });
+    }
+});
+// 存储文档设置
+const documentSettings = new Map();
+// 重置所有文档设置
+connection.onDidChangeConfiguration((change) => {
+    if (hasConfigurationCapability) {
+        documentSettings.clear();
+    }
+    else {
+        documentSettings.set('*', Promise.resolve(change.settings));
+    }
+    // 重新验证所有打开的文档
+    documents.all().forEach(validateTextDocument);
+});
+// 仅当客户端不支持文档设置时才使用全局设置
+function getDocumentSettings(resource) {
+    if (!hasConfigurationCapability) {
+        return Promise.resolve(documentSettings.get('*'));
+    }
+    let result = documentSettings.get(resource);
+    if (!result) {
+        result = connection.workspace.getConfiguration({
+            scopeUri: resource,
+            section: 'vix'
+        });
+        documentSettings.set(resource, result);
+    }
+    return result;
+}
+// 监听文档变化并验证
+documents.onDidOpen(change => {
+    validateTextDocument(change.document);
+});
+documents.onDidChangeContent(change => {
+    validateTextDocument(change.document);
+});
+async function validateTextDocument(textDocument) {
+    const diagnostics = [];
+    // 获取文档内容
+    const text = textDocument.getText();
+    const lines = text.split(/\r?\n/g);
+    // 遍历每一行检查错误
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        // 检查一些常见的错误模式
+        if (line.toLowerCase().includes('error')) {
+            diagnostics.push(node_1.Diagnostic.create({ start: { line: i, character: line.toLowerCase().indexOf('error') },
+                end: { line: i, character: line.toLowerCase().indexOf('error') + 5 } }, 'Found error keyword in line', node_1.DiagnosticSeverity.Error, 100, 'VixChecker'));
+        }
+        // 检查语法错误：未闭合的括号
+        const openParen = (line.match(/\(/g) || []).length;
+        const closeParen = (line.match(/\)/g) || []).length;
+        if (openParen > closeParen) {
+            diagnostics.push(node_1.Diagnostic.create({ start: { line: i, character: 0 },
+                end: { line: i, character: line.length } }, 'Unmatched parentheses', node_1.DiagnosticSeverity.Warning, 101, 'VixChecker'));
+        }
+        // 检查未闭合的引号
+        const singleQuotes = (line.match(/'/g) || []).length;
+        const doubleQuotes = (line.match(/"/g) || []).length;
+        if (singleQuotes % 2 !== 0) {
+            diagnostics.push(node_1.Diagnostic.create({ start: { line: i, character: 0 },
+                end: { line: i, character: line.length } }, 'Unmatched single quotes', node_1.DiagnosticSeverity.Warning, 102, 'VixChecker'));
+        }
+        if (doubleQuotes % 2 !== 0) {
+            diagnostics.push(node_1.Diagnostic.create({ start: { line: i, character: 0 },
+                end: { line: i, character: line.length } }, 'Unmatched double quotes', node_1.DiagnosticSeverity.Warning, 103, 'VixChecker'));
+        }
+    }
+    // 发送诊断信息到客户端
+    connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+}
+// 提供代码补全建议
+connection.onCompletion(async (textDocumentPosition) => {
+    // 获取当前文档
+    const document = documents.get(textDocumentPosition.textDocument.uri);
+    if (!document) {
+        return [];
+    }
+    const completions = [];
+    // 基础关键词补全
+    const keywords = [
+        { label: 'fn', detail: 'Define a function', insertText: 'function ${1:name}(${2:params}) {\n\t${0}\n}' },
+        { label: 'if', detail: 'If statement', insertText: 'if (${1:condition}) {\n\t${0}\n}' },
+        { label: 'ifelse', detail: 'If-Else statement', insertText: 'if (${1:condition}) {\n\t${2}\n} else {\n\t${0}\n}' },
+        { label: 'for', detail: 'For loop', insertText: 'for (let ${1:i} = 0; ${1:i} < ${2:length}; ${1:i}++) {\n\t${0}\n}' },
+        { label: 'while', detail: 'While loop', insertText: 'while (${1:condition}) {\n\t${0}\n}' },
+        { label: 'variable', detail: 'Variable declaration', insertText: 'let ${1:name} = ${0};' },
+        { label: 'console.log', detail: 'Log to console', insertText: 'console.log(${0});' },
+        { label: 'class', detail: 'Class declaration', insertText: 'class ${1:Name} {\n\tconstructor(${2:args}) {\n\t\t${0}\n\t}\n}' },
+        { label: 'import', detail: 'Import statement', insertText: 'import { ${1} } from \'${0}\';' },
+        { label: 'return', detail: 'Return statement', insertText: 'return ${0};' }
+    ];
+    keywords.forEach(keyword => {
+        completions.push({
+            label: keyword.label,
+            kind: node_1.CompletionItemKind.Keyword,
+            detail: keyword.detail,
+            insertText: keyword.insertText,
+            insertTextFormat: 2 // Snippet format
+        });
+    });
+    // 特定 Vix 语言函数补全
+    const vixFunctions = [
+        { label: 'print', detail: 'Print to output', insertText: 'print(${0:text});' },
+        { label: 'read', detail: 'Read input', insertText: 'read(${0:prompt});' },
+        { label: 'wait', detail: 'Wait for delay', insertText: 'wait(${0:milliseconds});' },
+        { label: 'parse', detail: 'Parse expression', insertText: 'parse(${0:expr});' },
+        { label: 'toint', detail: 'Convert to integer', insertText: 'toint(${0:value});' },
+        { label: 'tofloat', detail: 'Convert to float', insertText: 'tofloat(${0:value});' },
+        { label: 'tostring', detail: 'Convert to string', insertText: 'tostring(${0:value});' },
+        { label: 'length', detail: 'Get length of collection', insertText: 'length(${0:collection});' },
+        { label: 'add', detail: 'Append to collection', insertText: 'add(${0:collection}, ${1:item});' },
+        { label: 'remove', detail: 'Remove from collection', insertText: 'remove(${0:collection}, ${1:index});' }
+    ];
+    vixFunctions.forEach(func => {
+        completions.push({
+            label: func.label,
+            kind: node_1.CompletionItemKind.Method,
+            detail: func.detail,
+            insertText: func.insertText,
+            insertTextFormat: 2
+        });
+    });
+    return completions;
+});
+// 解析补全项
+connection.onCompletionResolve((item) => {
+    if (item.data === 1) {
+        item.detail = 'Vix details';
+        item.documentation = 'Vix documentation';
+    }
+    return item;
+});
+// 监听文档改变
+documents.listen(connection);
+// 监听连接
+connection.listen();
+//# sourceMappingURL=server.js.map

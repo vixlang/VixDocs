@@ -1,0 +1,48 @@
+{
+  "name": "vix",
+  "displayName": "Vix Language Support",
+  "description": "为 Vix 语言提供核心语言支持，包括语法高亮、智能代码补全（IntelliSense）和实时错误诊断提示",
+  "version": "0.0.1",
+  "publisher": "vix-team",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "main": "./out/extension.js",
+  "icon": "images/logo.png",
+  "contributes": {
+    "languages": [{
+      "id": "vix",
+      "aliases": ["Vix", "vix"],
+      "extensions": [".vix"],
+      "icon": {
+        "light": "images/logo.png",
+        "dark": "images/logo.png"
+      },
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "vix",
+      "scopeName": "source.vix",
+      "path": "./syntaxes/vix.json"
+    }]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.109.0",
+    "typescript": "^4.8.0",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^8.0.1",
+    "vscode-languageserver": "^8.0.1",
+    "vscode-languageserver-textdocument": "^1.0.4"
+  }
+}
