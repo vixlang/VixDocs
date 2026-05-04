@@ -123,6 +123,7 @@ export default defineConfig({
            text: 'VPM 包管理器',
            collapsed: true,
            items: [
+             { text: 'VPM 主页', link: '/vpm/zh_CN/' },
              { text: '什么是 VPM？', link: '/vpm/zh_CN/what-is-vpm' },
              { text: '快速入门', link: '/vpm/zh_CN/getting-started' },
              { text: '命令参考', link: '/vpm/zh_CN/commands' },
@@ -132,6 +133,7 @@ export default defineConfig({
            text: 'VPM Package Manager',
            collapsed: true,
            items: [
+             { text: 'VPM Main Page', link: '/vpm/en/' },
              { text: 'What is VPM?', link: '/vpm/en/what-is-vpm' },
              { text: 'Getting Started', link: '/vpm/en/getting-started' },
              { text: 'Commands Reference', link: '/vpm/en/commands' },
@@ -180,6 +182,7 @@ export default defineConfig({
            text: 'VPM 包管理器',
            collapsed: true,
            items: [
+             { text: 'VPM 主页', link: '/vpm/zh-CN/' },
              { text: '什么是 VPM？', link: '/vpm/zh_CN/what-is-vpm' },
              { text: '快速入门', link: '/vpm/zh_CN/getting-started' },
              { text: '命令参考', link: '/vpm/zh_CN/commands' },
@@ -189,6 +192,7 @@ export default defineConfig({
            text: 'VPM Package Manager',
            collapsed: true,
            items: [
+             { text: 'VPM Main Page', link: '/vpm/en/' },
              { text: 'What is VPM?', link: '/vpm/en/what-is-vpm' },
              { text: 'Getting Started', link: '/vpm/en/getting-started' },
              { text: 'Commands Reference', link: '/vpm/en/commands' },
