@@ -81,7 +81,8 @@ export default defineConfig({
        { text: '首页', link: '/' },
        { text: 'Vix 语言', link: '/zh_CN/what-is-vix' },
        { text: 'Vix Lang', link: '/en/what-is-vix' },
-       { text: 'VPM', link: '/vpm/zh_CN/' },
+       { text: 'VPM', link: '/vpm/' },
+       { text: 'VPM (中文)', link: '/vpm/zh_CN/' },
        { text: 'VPM (En)', link: '/vpm/en/' },
      ],
 
