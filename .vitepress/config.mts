@@ -85,21 +85,6 @@ export default defineConfig({
 
      sidebar: [
        {
-         text: '概览',
-         collapsed: false,
-         items: [
-           { text: '概览', link: '/zh/overview' },
-           { text: '公告列表', link: '/zh/list' },
-         ]
-       },
-       {
-         text: '公告',
-         collapsed: true,
-         items: [
-           { text: '对 TTHSD Next ABI 变动的解释', link: '/zh/ABI-Changing-Explan' },
-         ]
-       },
-       {
          text: 'Vix 语言文档 (中文)',
          collapsed: false,
          items: [
