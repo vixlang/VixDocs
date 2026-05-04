@@ -1,6 +1,6 @@
 <!-- ![VPM logo](/assets/vpm-logo.png) -->
 
-# VPM - Vix 包管理器#
+# VPM - Vix 包管理器
 
 [![Vix](https://img.shields.io/badge/Vix-编程语言-blue)]()
 [![License](https://img.shields.io/badge/许可证-Apache%202.0-blue)]()
