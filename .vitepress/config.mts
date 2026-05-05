@@ -84,6 +84,8 @@ export default defineConfig({
        { text: 'VPM', link: '/vpm/' },
        { text: 'VPM (中文)', link: '/vpm/zh_CN/' },
        { text: 'VPM (En)', link: '/vpm/en/' },
+       { text: '鸣谢', link: '/zh_CN/acknowledgements' },
+       { text: 'Acknowledgements', link: '/en/acknowledgements' },
      ],
 
      sidebar: {
@@ -142,42 +144,56 @@ export default defineConfig({
          },
        ],
 
-       '/zh_CN/': [
-         {
-           text: 'Vix 语言文档',
-           collapsed: true,
-           items: [
-             { text: '什么是 Vix 语言', link: '/zh_CN/what-is-vix' },
-             { text: '快速入门', link: '/zh_CN/getting-started' },
-             { text: '语法参考', link: '/zh_CN/syntax' },
-             { text: '类型系统', link: '/zh_CN/types' },
-             { text: '函数', link: '/zh_CN/functions' },
-             { text: '控制流', link: '/zh_CN/control-flow' },
-             { text: '结构体', link: '/zh_CN/structs' },
-             { text: '指针', link: '/zh_CN/pointers' },
-             { text: '模块系统', link: '/zh_CN/modules' },
-             { text: '标准库', link: '/zh_CN/stdlib' },
-           ]
-         },
-       ],
-       '/en/': [
-         {
-           text: 'Vix Language Documentation',
-           collapsed: true,
-           items: [
-             { text: 'Overview', link: '/en/what-is-vix' },
-             { text: 'Getting Started', link: '/en/getting-started' },
-             { text: 'Syntax Reference', link: '/en/syntax' },
-             { text: 'Type System', link: '/en/types' },
-             { text: 'Functions', link: '/en/functions' },
-             { text: 'Control Flow', link: '/en/control-flow' },
-             { text: 'Structs', link: '/en/structs' },
-             { text: 'Pointers', link: '/en/pointers' },
-             { text: 'Modules', link: '/en/modules' },
-             { text: 'Standard Library', link: '/en/stdlib' },
-           ]
-         },
-       ],
+        '/zh_CN/': [
+          {
+            text: 'Vix 语言文档',
+            collapsed: true,
+            items: [
+              { text: '什么是 Vix 语言', link: '/zh_CN/what-is-vix' },
+              { text: '快速入门', link: '/zh_CN/getting-started' },
+              { text: '语法参考', link: '/zh_CN/syntax' },
+              { text: '类型系统', link: '/zh_CN/types' },
+              { text: '函数', link: '/zh_CN/functions' },
+              { text: '控制流', link: '/zh_CN/control-flow' },
+              { text: '结构体', link: '/zh_CN/structs' },
+              { text: '指针', link: '/zh_CN/pointers' },
+              { text: '模块系统', link: '/zh_CN/modules' },
+              { text: '标准库', link: '/zh_CN/stdlib' },
+            ]
+          },
+          {
+            text: '其他',
+            collapsed: false,
+            items: [
+              { text: '鸣谢', link: '/zh_CN/acknowledgements' },
+            ]
+          },
+        ],
+        '/en/': [
+          {
+            text: 'Vix Language Documentation',
+            collapsed: true,
+            items: [
+              { text: 'Overview', link: '/en/what-is-vix' },
+              { text: 'Getting Started', link: '/en/getting-started' },
+              { text: 'Syntax Reference', link: '/en/syntax' },
+              { text: 'Type System', link: '/en/types' },
+              { text: 'Functions', link: '/en/functions' },
+              { text: 'Control Flow', link: '/en/control-flow' },
+              { text: 'Structs', link: '/en/structs' },
+              { text: 'Pointers', link: '/en/pointers' },
+              { text: 'Modules', link: '/en/modules' },
+              { text: 'Standard Library', link: '/en/stdlib' },
+            ]
+          },
+          {
+            text: 'Others',
+            collapsed: false,
+            items: [
+              { text: 'Acknowledgements', link: '/en/acknowledgements' },
+            ]
+          },
+        ],
        '/vpm/': [
          {
            text: 'Vix 包管理器',
