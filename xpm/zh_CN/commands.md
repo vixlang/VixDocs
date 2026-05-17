@@ -1,30 +1,30 @@
-# VPM 命令参考
+# xpm 命令参考
 
-VPM（Vix 包管理器）所有命令的完整参考。
+xpm（Vix 包管理器）所有命令的完整参考。
 
 ## 命令概览
 
 | 命令 | 描述 |
 |---------|-------------|
-| `vpm init [name]` | 初始化新的 Vix 项目 |
-| `vpm add <package>[@version]` | 添加包依赖 |
-| `vpm remove <package>` | 移除包依赖 |
-| `vpm install` | 安装所有依赖 |
-| `vpm update [package]` | 更新包 |
-| `vpm search <query>` | 搜索包 |
-| `vpm publish` | 发布你的包 |
-| `vpm list` | 列出已安装的包 |
-| `vpm info <package>` | 显示包信息 |
-| `vpm config` | 配置 VPM 设置 |
+| `xpm init [name]` | 初始化新的 Vix 项目 |
+| `xpm add <package>[@version]` | 添加包依赖 |
+| `xpm remove <package>` | 移除包依赖 |
+| `xpm install` | 安装所有依赖 |
+| `xpm update [package]` | 更新包 |
+| `xpm search <query>` | 搜索包 |
+| `xpm publish` | 发布你的包 |
+| `xpm list` | 列出已安装的包 |
+| `xpm info <package>` | 显示包信息 |
+| `xpm config` | 配置 xpm 设置 |
 
 ## 详细命令参考
 
-### vpm init
+### xpm init
 
 初始化新的 Vix 项目：
 
 ```bash
-vpm init [project-name]
+xpm init [project-name]
 ```
 
 **选项：**
@@ -34,15 +34,15 @@ vpm init [project-name]
 
 **示例：**
 ```bash
-vpm init my-app --template cli --author "John Doe" --license MIT
+xpm init my-app --template cli --author "John Doe" --license MIT
 ```
 
-### vpm add
+### xpm add
 
 向你的项目添加包：
 
 ```bash
-vpm add <package-name>[@version]
+xpm add <package-name>[@version]
 ```
 
 **选项：**
@@ -51,42 +51,42 @@ vpm add <package-name>[@version]
 
 **示例：**
 ```bash
-vpm add std-extra
-vpm add math-lib@1.0.0
-vpm add test-lib --dev
+xpm add std-extra
+xpm add math-lib@1.0.0
+xpm add test-lib --dev
 ```
 
-### vpm remove
+### xpm remove
 
 从项目中移除包：
 
 ```bash
-vpm remove <package-name>
+xpm remove <package-name>
 ```
 
 **示例：**
 ```bash
-vpm remove std-extra
+xpm remove std-extra
 ```
 
-### vpm install
+### xpm install
 
-安装 `vpm.json` 中列出的所有依赖：
+安装 `xpm.json` 中列出的所有依赖：
 
 ```bash
-vpm install
+xpm install
 ```
 
 **选项：**
 - `--production` - 跳过开发依赖
 - `--force` - 强制重新安装所有包
 
-### vpm update
+### xpm update
 
 更新包到最新版本：
 
 ```bash
-vpm update [package-name]
+xpm update [package-name]
 ```
 
 **选项：**
@@ -96,17 +96,17 @@ vpm update [package-name]
 
 **示例：**
 ```bash
-vpm update              # 更新所有
-vpm update std-extra    # 更新指定包
-vpm update --major     # 允许破坏性更改
+xpm update              # 更新所有
+xpm update std-extra    # 更新指定包
+xpm update --major     # 允许破坏性更改
 ```
 
-### vpm search
+### xpm search
 
 搜索包注册表：
 
 ```bash
-vpm search <query>
+xpm search <query>
 ```
 
 **选项：**
@@ -115,15 +115,15 @@ vpm search <query>
 
 **示例：**
 ```bash
-vpm search math --limit 10
+xpm search math --limit 10
 ```
 
-### vpm publish
+### xpm publish
 
 发布你的包到注册表：
 
 ```bash
-vpm publish
+xpm publish
 ```
 
 **选项：**
@@ -132,14 +132,14 @@ vpm publish
 
 **前置条件：**
 - 你必须在 Vix 包注册表上有账户
-- 你必须已登录（`vpm login`）
+- 你必须已登录（`xpm login`）
 
-### vpm list
+### xpm list
 
 列出所有已安装的包：
 
 ```bash
-vpm list
+xpm list
 ```
 
 **输出：**
@@ -154,12 +154,12 @@ vpm list
 - `--outdated` - 仅显示过时的包
 - `--json` - 以 JSON 格式输出
 
-### vpm info
+### xpm info
 
 显示包的详细信息：
 
 ```bash
-vpm info <package-name>
+xpm info <package-name>
 ```
 
 **输出：**
@@ -174,12 +174,12 @@ vpm info <package-name>
   - math-lib@^0.5.0
 ```
 
-### vpm config
+### xpm config
 
-配置 VPM 设置：
+配置 xpm 设置：
 
 ```bash
-vpm config <key> [value]
+xpm config <key> [value]
 ```
 
 **可用键：**
@@ -189,18 +189,18 @@ vpm config <key> [value]
 
 **示例：**
 ```bash
-vpm config registry https://packages.vix-lang.org
-vpm config cache-dir ~/.vpm/cache
-vpm config auto-install true
+xpm config registry https://packages.vix-lang.org
+xpm config cache-dir ~/.xpm/cache
+xpm config auto-install true
 ```
 
 ## 配置文件
 
-VPM 使用 `~/.vpm/config.toml` 作为全局设置：
+xpm 使用 `~/.xpm/config.toml` 作为全局设置：
 
 ```toml
 registry = "https://packages.vix-lang.org"
-cache_dir = "~/.vpm/cache"
+cache_dir = "~/.xpm/cache"
 auto_install = true
 
 [publish]
@@ -210,5 +210,5 @@ token = "your-api-token"
 
 ## 下一步
 
-- [什么是 VPM？](what-is-vpm.md) - 概述
+- [什么是 xpm？](what-is-xpm.md) - 概述
 - [快速入门](getting-started.md) - 快速开始指南

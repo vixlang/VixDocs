@@ -1,7 +1,8 @@
 dist/
-Vix-lang/
 node_modules/
 .DS_Store
 *.lock
 cache/
-vpmCode/
+.vpm/
+Vix-lang/
+XpmCode/

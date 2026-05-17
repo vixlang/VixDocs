@@ -1,6 +1,6 @@
-# VPM 快速入门
+# xpm 快速入门
 
-本指南帮助你快速上手 VPM（Vix 包管理器）。
+本指南帮助你快速上手 xpm（Vix 包管理器）。
 
 ## 前置条件
 
@@ -13,14 +13,14 @@
 ### 初始化项目
 
 ```bash
-vpm init my-project
+xpm init my-project
 ```
 
 这会创建一个具有如下结构的新目录：
 
 ```
 my-project/
-├── vpm.json          # 项目配置文件
+├── xpm.json          # 项目配置文件
 ├── src/
 │   └── main.vix    # 入口文件
 ├── lib/             # 依赖目录
@@ -29,7 +29,7 @@ my-project/
 
 ### 项目配置
 
-`vpm.json` 文件包含你的项目元数据：
+`xpm.json` 文件包含你的项目元数据：
 
 ```json
 {
@@ -47,10 +47,10 @@ my-project/
 ### 添加包
 
 ```bash
-vpm add std-extra
+xpm add std-extra
 ```
 
-这会更新 `vpm.json`：
+这会更新 `xpm.json`：
 
 ```json
 {
@@ -63,21 +63,21 @@ vpm add std-extra
 ### 添加指定版本
 
 ```bash
-vpm add std-extra@1.0.0
+xpm add std-extra@1.0.0
 ```
 
 ### 移除包
 
 ```bash
-vpm remove std-extra
+xpm remove std-extra
 ```
 
 ### 安装依赖
 
-安装 `vpm.json` 中列出的所有依赖：
+安装 `xpm.json` 中列出的所有依赖：
 
 ```bash
-vpm install
+xpm install
 ```
 
 ## 在代码中使用包
@@ -99,19 +99,19 @@ fn main() -> i32 {
 ### 更新所有包
 
 ```bash
-vpm update
+xpm update
 ```
 
 ### 更新指定包
 
 ```bash
-vpm update std-extra
+xpm update std-extra
 ```
 
 ## 搜索包
 
 ```bash
-vpm search math
+xpm search math
 ```
 
 输出：
@@ -126,7 +126,7 @@ vpm search math
 
 ### 1. 准备你的包
 
-为你的包创建 `vpm.json`：
+为你的包创建 `xpm.json`：
 
 ```json
 {
@@ -143,10 +143,10 @@ vpm search math
 ### 2. 发布
 
 ```bash
-vpm publish
+xpm publish
 ```
 
 ## 下一步
 
-- [命令参考](commands.md) - 完整 VPM 命令文档
-- [什么是 VPM？](what-is-vpm.md) - 概述和特性
+- [命令参考](commands.md) - 完整 xpm 命令文档
+- [什么是 xpm？](what-is-xpm.md) - 概述和特性

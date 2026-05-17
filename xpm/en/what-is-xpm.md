@@ -1,10 +1,10 @@
-# What is VPM?
+# What is xpm?
 
-VPM (Vix Package Manager) is the official package manager for the Vix programming language. It helps you manage dependencies, share code, and publish your own Vix packages.
+xpm (Vix Package Manager) is the official package manager for the Vix programming language. It helps you manage dependencies, share code, and publish your own Vix packages.
 
 ## Overview
 
-VPM simplifies the process of:
+xpm simplifies the process of:
 - **Dependency Management**: Add, update, and remove packages easily
 - **Project Initialization**: Quickly set up a new Vix project with proper structure
 - **Package Publishing**: Share your libraries with the Vix community
@@ -14,7 +14,7 @@ VPM simplifies the process of:
 
 ### 1. Simple Configuration
 
-VPM uses a `vpm.json` file to manage project dependencies:
+xpm uses a `xpm.json` file to manage project dependencies:
 
 ```json
 {
@@ -29,10 +29,10 @@ VPM uses a `vpm.json` file to manage project dependencies:
 
 ### 2. Automatic Dependency Resolution
 
-VPM automatically resolves and downloads dependencies:
+xpm automatically resolves and downloads dependencies:
 
 ```bash
-vpm install
+xpm install
 ```
 
 ### 3. Local Cache
@@ -40,7 +40,7 @@ vpm install
 Packages are cached locally to avoid re-downloading:
 
 ```
-~/.vpm/
+~/.xpm/
 ├── cache/
 │   ├── std-extra@1.2.0/
 │   └── math-lib@0.5.0/
@@ -52,8 +52,8 @@ Packages are cached locally to avoid re-downloading:
 ### From Source
 
 ```bash
-git clone https://github.com/vix-lang/vpm.git
-cd vpm
+git clone https://github.com/vix-lang/xpm.git
+cd xpm
 make
 sudo make install
 ```
@@ -61,23 +61,23 @@ sudo make install
 ### Verify Installation
 
 ```bash
-vpm --version
+xpm --version
 ```
 
 ## Basic Workflow
 
 ```bash
 # Create a new project
-vpm init my-project
+xpm init my-project
 
 # Navigate to project
 cd my-project
 
 # Add a dependency
-vpm add std-extra
+xpm add std-extra
 
 # Install all dependencies
-vpm install
+xpm install
 
 # Build your project
 vixc main.vix -o my-app
@@ -85,5 +85,5 @@ vixc main.vix -o my-app
 
 ## Next Steps
 
-- [Getting Started](getting-started.md) - Learn how to use VPM
+- [Getting Started](getting-started.md) - Learn how to use xpm
 - [Commands Reference](commands.md) - Complete command documentation

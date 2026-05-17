@@ -8,7 +8,14 @@
 
 Vix 是一种轻量级、静态类型的编译型语言，目标是在保持语法简洁的同时，提供接近原生语言的执行效率。
 
-[English](README-en.md) | [快速开始](#快速开始) | [文档](#文档) | [VS Code 扩展](https://github.com/Daweidie/vix-lang-analyzer) | [参与贡献](#参与贡献)
+[快速开始](#快速开始) | [文档](#文档) | [VS Code 扩展](https://github.com/Daweidie/vix-lang-analyzer) | [参与贡献](#参与贡献)
+
+## 版本
+
+| 版本 | 文档 |
+|------|------|
+| **v0.2.0** (最新) | [中文](/v0.2.0/zh_CN/what-is-vix) \| [English](/v0.2.0/en/what-is-vix) \| [更新日志](/v0.2.0/zh_CN/release-notes) |
+| **v0.1.0** | [中文](/v0.1.0/zh_CN/what-is-vix) \| [English](/v0.1.0/en/what-is-vix) |
 
 ## 特性概览
 
@@ -98,21 +105,21 @@ fn main() -> i32 {
 }
 ```
 
-##  文档
+## 文档
 
-- [CONTRIBUTING.md](/zh_CN/CONTRIBUTING.md) —— 贡献指南，如何参与项目开发
-- [control-flow.md](/zh_CN/control-flow.md) —— 控制流语句（if、循环等）的语法与用法
-- [functions.md](/zh_CN/functions.md) —— 函数定义、调用、泛型等特性
-- [getting-started.md](/zh_CN/getting-started.md) —— 快速入门指南，安装与第一个程序
-- [modules.md](/zh_CN/modules.md) —— 模块系统，导入与导出规则
-- [pointers.md](/zh_CN/pointers.md) —— 指针的声明、解引用、运算及使用示例
-- [stdlib.md](/zh_CN/stdlib.md) —— 标准库提供的函数与常用模块
-- [structs.md](/zh_CN/structs.md) —— 结构体定义、实例化、字段访问
-- [syntax.md](/zh_CN/syntax.md) —— 完整语法参考，包含 EBNF 形式
-- [types.md](/zh_CN/types.md) —— 类型系统：基本类型、泛型、联合类型等
-- [what-is-vix.md](/zh_CN/what-is-vix.md) —— Vix 语言简介与设计目标
+- [CONTRIBUTING.md](/v0.1.0/zh_CN/CONTRIBUTING.md) —— 贡献指南，如何参与项目开发
+- [control-flow.md](/v0.1.0/zh_CN/control-flow.md) —— 控制流语句（if、循环等）的语法与用法
+- [functions.md](/v0.1.0/zh_CN/functions.md) —— 函数定义、调用、泛型等特性
+- [getting-started.md](/v0.1.0/zh_CN/getting-started.md) —— 快速入门指南，安装与第一个程序
+- [modules.md](/v0.1.0/zh_CN/modules.md) —— 模块系统，导入与导出规则
+- [pointers.md](/v0.1.0/zh_CN/pointers.md) —— 指针的声明、解引用、运算及使用示例
+- [stdlib.md](/v0.1.0/zh_CN/stdlib.md) —— 标准库提供的函数与常用模块
+- [structs.md](/v0.1.0/zh_CN/structs.md) —— 结构体定义、实例化、字段访问
+- [syntax.md](/v0.1.0/zh_CN/syntax.md) —— 完整语法参考，包含 EBNF 形式
+- [types.md](/v0.1.0/zh_CN/types.md) —— 类型系统：基本类型、泛型、联合类型等
+- [what-is-vix.md](/v0.1.0/zh_CN/what-is-vix.md) —— Vix 语言简介与设计目标
 
-> 提示：如果你只想从零开始跑通一次编译 + 运行，建议先看 [getting-started.md](Docs/zh_CN/getting-started.md)。
+> 提示：如果你只想从零开始跑通一次编译 + 运行，建议先看 [getting-started.md](/v0.1.0/zh_CN/getting-started.md)。
 
 ## 参与贡献
 
@@ -127,7 +134,7 @@ Vix 正在逐步构建自己的生态：
 | 项目             | 描述                            | 状态             |
 | ---------------- | ------------------------------- | ---------------- |
 | **Vix 编译器**   | 核心编译器（LLVM/QBE/C++ 后端） | 开发中，即将自举 |
-| **VPM**          | Vix 包管理器                    | 社区贡献中       |
+| **xpm**          | Vix 包管理器                    | 社区贡献中       |
 | **标准库**       | 常用数据结构和函数              | 社区贡献中       |
 | **VS Code 扩展** | 编辑器支持                      | 已发布           |
 

@@ -1,6 +1,6 @@
-# Getting Started with VPM
+# Getting Started with xpm
 
-This guide will help you get started with VPM (Vix Package Manager) quickly.
+This guide will help you get started with xpm (Vix Package Manager) quickly.
 
 ## Prerequisites
 
@@ -13,14 +13,14 @@ This guide will help you get started with VPM (Vix Package Manager) quickly.
 ### Initialize a Project
 
 ```bash
-vpm init my-project
+xpm init my-project
 ```
 
 This creates a new directory with the following structure:
 
 ```
 my-project/
-├── vpm.json          # Project configuration
+├── xpm.json          # Project configuration
 ├── src/
 │   └── main.vix    # Entry point
 ├── lib/             # Dependencies directory
@@ -29,7 +29,7 @@ my-project/
 
 ### Project Configuration
 
-The `vpm.json` file contains your project metadata:
+The `xpm.json` file contains your project metadata:
 
 ```json
 {
@@ -47,10 +47,10 @@ The `vpm.json` file contains your project metadata:
 ### Adding a Package
 
 ```bash
-vpm add std-extra
+xpm add std-extra
 ```
 
-This updates `vpm.json`:
+This updates `xpm.json`:
 
 ```json
 {
@@ -63,21 +63,21 @@ This updates `vpm.json`:
 ### Adding a Specific Version
 
 ```bash
-vpm add std-extra@1.0.0
+xpm add std-extra@1.0.0
 ```
 
 ### Removing a Package
 
 ```bash
-vpm remove std-extra
+xpm remove std-extra
 ```
 
 ### Installing Dependencies
 
-Install all dependencies listed in `vpm.json`:
+Install all dependencies listed in `xpm.json`:
 
 ```bash
-vpm install
+xpm install
 ```
 
 ## Using Packages in Your Code
@@ -99,19 +99,19 @@ fn main() -> i32 {
 ### Update All Packages
 
 ```bash
-vpm update
+xpm update
 ```
 
 ### Update a Specific Package
 
 ```bash
-vpm update std-extra
+xpm update std-extra
 ```
 
 ## Searching for Packages
 
 ```bash
-vpm search math
+xpm search math
 ```
 
 Output:
@@ -126,7 +126,7 @@ Found 3 packages:
 
 ### 1. Prepare Your Package
 
-Create a `vpm.json` for your package:
+Create a `xpm.json` for your package:
 
 ```json
 {
@@ -143,10 +143,10 @@ Create a `vpm.json` for your package:
 ### 2. Publish
 
 ```bash
-vpm publish
+xpm publish
 ```
 
 ## Next Steps
 
-- [Commands Reference](commands.md) - Complete VPM command documentation
-- [What is VPM?](what-is-vpm.md) - Overview and features
+- [Commands Reference](commands.md) - Complete xpm command documentation
+- [What is xpm?](what-is-xpm.md) - Overview and features
