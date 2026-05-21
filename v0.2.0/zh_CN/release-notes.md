@@ -1,40 +1,40 @@
-# Vix v0.2.0 Release Notes
+# Vix v0.2.0 发布说明
 
-**Breaking Changes** — This is a major language redesign release.
+**破坏性变更** — 这是一个重大的语言重新设计版本。
 
-## Syntax Changes
+## 语法变更
 
-### 1. Removed `global` and `const` Keywords
+### 1. 移除了 `global` 和 `const` 关键字
 
-Module-level `let` declarations now automatically have **persistent storage duration** (like globals). No special keyword is needed.
+模块级别的 `let` 声明现在自动具有**持久存储期**（类似全局变量）。无需特殊关键字。
 
-**Before (v0.1.x):**
+**之前 (v0.1.x)：**
 ```vix
 global counter: i32 = 100
 const MAX_SIZE = 1024
 let const N = 10
 ```
 
-**After (v0.2.0):**
+**之后 (v0.2.0)：**
 ```vix
 let counter: i32 = 100
 let MAX_SIZE = 1024
 ```
 
-- Variables declared at **module level** with `let` are automatically global and persistent.
-- Variables declared at **function level** with `let` are stack-local (as before).
-- Use `let mut` for mutable variables at any scope.
+- 在**模块级别**使用 `let` 声明的变量自动成为全局且持久的。
+- 在**函数级别**使用 `let` 声明的变量是栈局部变量（与之前相同）。
+- 在任何作用域中使用 `let mut` 声明可变变量。
 
-### 2. Removed Auto-Generated `main()` Function
+### 2. 移除了自动生成的 `main()` 函数
 
-The compiler no longer auto-generates a `main()` function. You **must** define `fn main()` explicitly.
+编译器不再自动生成 `main()` 函数。你**必须**显式定义 `fn main()`。
 
-**Before (v0.1.x):**
+**之前 (v0.1.x)：**
 ```vix
 print("hello")
 ```
 
-**After (v0.2.0):**
+**之后 (v0.2.0)：**
 ```vix
 fn main(): i32
 {
@@ -43,21 +43,21 @@ fn main(): i32
 }
 ```
 
-If no `fn main()` is defined and `#[no_main]` is not set, the compiler will emit an error.
+如果没有定义 `fn main()` 且未设置 `#[no_main]`，编译器将报错。
 
-### 3. Variables Are Immutable by Default
+### 3. 变量默认不可变
 
-All `let` declarations are now **immutable by default**. Use `let mut` to declare mutable variables.
+所有 `let` 声明现在**默认不可变**。使用 `let mut` 声明可变变量。
 
 ```vix
-let x = 10        // immutable
-let mut y = 20    // mutable
-y = 30            // OK
+let x = 10        // 不可变
+let mut y = 20    // 可变
+y = 30            // 允许
 ```
 
-### 4. Function-Level Static Variables
+### 4. 函数级静态变量
 
-For rare cases requiring static storage duration inside functions, use `let static mut`:
+对于需要在函数内部具有静态存储期的罕见情况，使用 `let static mut`：
 
 ```vix
 fn get_id(): i32
@@ -68,24 +68,24 @@ fn get_id(): i32
 }
 ```
 
-## Bug Fixes
+## Bug 修复
 
-### Windows Linker
+### Windows 链接器
 
-- Fixed MinGW linker failing to find `-lmoldname`, `-lpthread`, `-ladvapi32`, `-lshell32`, `-luser32` when the bundled `libc/` directory is incomplete.
-- Added automatic probing of Windows SDK and MSVC library paths.
-- Libraries are now only linked if they are actually found on the system, preventing linker errors from missing optional libraries.
+- 修复了当捆绑的 `libc/` 目录不完整时，MinGW 链接器无法找到 `-lmoldname`、`-lpthread`、`-ladvapi32`、`-lshell32`、`-luser32` 的问题。
+- 新增了自动探测 Windows SDK 和 MSVC 库路径的功能。
+- 现在只有在系统上实际找到库时才链接它们，防止因缺失可选库而导致的链接器错误。
 
-## Migration Guide
+## 迁移指南
 
-1. Replace all `global` declarations with `let`.
-2. Replace all `const` and `let const` declarations with `let`.
-3. Replace all `pub global` declarations with `let` (add `pub` support for `let` in future releases).
-4. Add `fn main(): i32 { ... return 0 }` to any file that previously relied on top-level code execution.
-5. Add `mut` to any variable that needs to be reassigned.
+1. 将所有 `global` 声明替换为 `let`。
+2. 将所有 `const` 和 `let const` 声明替换为 `let`。
+3. 将所有 `pub global` 声明替换为 `let`（未来版本中将为 `let` 添加 `pub` 支持）。
+4. 为之前依赖顶层代码执行的文件添加 `fn main(): i32 { ... return 0 }`。
+5. 为任何需要重新赋值的变量添加 `mut`。
 
-## Test Results
+## 测试结果
 
-- 732/732 pytest tests passing
-- 220/220 compilation tests passing
-- 209/209 run tests passing
+- 732/732 pytest 测试通过
+- 220/220 编译测试通过
+- 209/209 运行测试通过

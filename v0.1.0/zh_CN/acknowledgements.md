@@ -31,10 +31,10 @@ const members_Contributor = [
   },
   {
     avatar: 'https://images-sxxyrry.pages.dev/sxxyrryAvatar.png',
-    name: 'XR/sxxyrry/みらいの落英',
+    name: '星燃_X-starRelight',
     title: '文档编写，文档网站搭建',
     links: [
-      { icon: 'github', link: 'https://github.com/sxxyrry' },
+      { icon: 'github', link: 'https://github.com/X-starRelight' },
     ]
   },
 ]
