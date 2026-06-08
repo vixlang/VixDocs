@@ -14,7 +14,8 @@ Vix 是一种轻量级、静态类型的编译型语言，目标是在保持语�
 
 | 版本 | 文档 |
 |------|------|
-| **v0.2.0** (最新) | [中文](/v0.2.0/zh_CN/what-is-vix) \| [English](/v0.2.0/en/what-is-vix) \| [更新日志](/v0.2.0/zh_CN/release-notes) |
+| **v0.3.0** (最新) | [中文](/v0.3.0/zh_CN/what-is-vix) \| [English](/v0.3.0/en/what-is-vix) \| [更新日志](/v0.3.0/zh_CN/release-notes) |
+| **v0.2.0** | [中文](/v0.2.0/zh_CN/what-is-vix) \| [English](/v0.2.0/en/what-is-vix) \| [更新日志](/v0.2.0/zh_CN/release-notes) |
 | **v0.1.0** | [中文](/v0.1.0/zh_CN/what-is-vix) \| [English](/v0.1.0/en/what-is-vix) |
 
 ## 特性概览
@@ -57,7 +58,8 @@ make
 创建 `hello.vix`：
 
 ```vix
-fn main() -> i32 {
+fn main(): i32
+{
     print("Hello, Vix!")
     return 0
 }
@@ -79,14 +81,16 @@ fn main() -> i32 {
 ### 斐波那契
 
 ```vix
-fn fib(n: i32) -> i32 {
+fn fib(n: i32): i32
+{
     if (n <= 1) {
         return n
     }
     return fib(n - 1) + fib(n - 2)
 }
 
-fn main() -> i32 {
+fn main(): i32
+{
     print(fib(10))
     return 0
 }
@@ -95,8 +99,9 @@ fn main() -> i32 {
 ### for 循环
 
 ```vix
-fn main() -> i32 {
-    mut sum = 0
+fn main(): i32
+{
+    let mut sum = 0
     for (i in 1 .. 100) {
         sum = sum + i
     }
@@ -107,19 +112,18 @@ fn main() -> i32 {
 
 ## 文档
 
-- [CONTRIBUTING.md](/v0.1.0/zh_CN/CONTRIBUTING.md) —— 贡献指南，如何参与项目开发
-- [control-flow.md](/v0.1.0/zh_CN/control-flow.md) —— 控制流语句（if、循环等）的语法与用法
-- [functions.md](/v0.1.0/zh_CN/functions.md) —— 函数定义、调用、泛型等特性
-- [getting-started.md](/v0.1.0/zh_CN/getting-started.md) —— 快速入门指南，安装与第一个程序
-- [modules.md](/v0.1.0/zh_CN/modules.md) —— 模块系统，导入与导出规则
-- [pointers.md](/v0.1.0/zh_CN/pointers.md) —— 指针的声明、解引用、运算及使用示例
-- [stdlib.md](/v0.1.0/zh_CN/stdlib.md) —— 标准库提供的函数与常用模块
-- [structs.md](/v0.1.0/zh_CN/structs.md) —— 结构体定义、实例化、字段访问
-- [syntax.md](/v0.1.0/zh_CN/syntax.md) —— 完整语法参考，包含 EBNF 形式
-- [types.md](/v0.1.0/zh_CN/types.md) —— 类型系统：基本类型、泛型、联合类型等
-- [what-is-vix.md](/v0.1.0/zh_CN/what-is-vix.md) —— Vix 语言简介与设计目标
+- [control-flow.md](/v0.3.0/zh_CN/control-flow.md) —— 控制流语句（if、循环等）的语法与用法
+- [functions.md](/v0.3.0/zh_CN/functions.md) —— 函数定义、调用、泛型等特性
+- [getting-started.md](/v0.3.0/zh_CN/getting-started.md) —— 快速入门指南，安装与第一个程序
+- [modules.md](/v0.3.0/zh_CN/modules.md) —— 模块系统，导入与导出规则
+- [pointers.md](/v0.3.0/zh_CN/pointers.md) —— 指针的声明、解引用、运算及使用示例
+- [stdlib.md](/v0.3.0/zh_CN/stdlib.md) —— 标准库提供的函数与常用模块
+- [structs.md](/v0.3.0/zh_CN/type-struct.md) —— 结构体定义、实例化、字段访问
+- [syntax.md](/v0.3.0/zh_CN/syntax.md) —— 完整语法参考，包含 EBNF 形式
+- [types.md](/v0.3.0/zh_CN/types.md) —— 类型系统：基本类型、泛型、联合类型等
+- [what-is-vix.md](/v0.3.0/zh_CN/what-is-vix.md) —— Vix 语言简介与设计目标
 
-> 提示：如果你只想从零开始跑通一次编译 + 运行，建议先看 [getting-started.md](/v0.1.0/zh_CN/getting-started.md)。
+> 提示：如果你只想从零开始跑通一次编译 + 运行，建议先看 [getting-started.md](/v0.3.0/zh_CN/getting-started.md)。
 
 ## 参与贡献
 
