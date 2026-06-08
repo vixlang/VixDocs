@@ -1,12 +1,13 @@
 import { defineConfig } from 'vitepress'
 import { createHighlighter } from 'shiki'
+import type { LanguageRegistration } from 'shiki'
 import vixGrammar from './theme/vix/extension/syntaxes/vix.json'
 
 const vixLang = {
   ...vixGrammar,
   id: 'vix',
   name: 'vix'
-}
+} as LanguageRegistration
 
 const commonLangs = ['bash', 'sh', 'javascript', 'typescript', 'json', 'markdown', 'html', 'css', 'yaml', 'toml', 'python', 'rust', 'go', 'java', 'cpp', 'c', 'sql', 'xml', 'dockerfile', 'ini', 'lua', 'powershell', 'shellscript']
 
