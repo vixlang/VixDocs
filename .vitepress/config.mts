@@ -82,9 +82,13 @@ export default defineConfig({
       provider: 'local'
     },
     // https://vitepress.dev/reference/default-theme-config
-   nav: [
-        { text: '首页', link: '/' },
-        { text: 'v0.3.0', items: [
+    nav: [
+         { text: '首页', link: '/' },
+         { text: 'v0.4.0', items: [
+           { text: 'Vix 语言 (中文)', link: '/v0.4.0/zh_CN/what-is-vix' },
+           { text: '更新日志', link: '/v0.4.0/zh_CN/release-notes' },
+         ]},
+         { text: 'v0.3.0', items: [
           { text: 'Vix 语言 (中文)', link: '/v0.3.0/zh_CN/what-is-vix' },
           { text: 'Vix Language (English)', link: '/v0.3.0/en/what-is-vix' },
           { text: '更新日志', link: '/v0.3.0/zh_CN/release-notes' },
@@ -113,6 +117,38 @@ export default defineConfig({
 
       sidebar: {
         '/': [
+          {
+            text: 'v0.4.0 — Vix 语言文档',
+            collapsed: true,
+            items: [
+              { text: '什么是 Vix 语言', link: '/v0.4.0/zh_CN/what-is-vix' },
+              { text: '语法参考', link: '/v0.4.0/zh_CN/syntax' },
+              { text: '类型系统', link: '/v0.4.0/zh_CN/types' },
+              { text: '基本类型', link: '/v0.4.0/zh_CN/type-primitive' },
+              { text: '数组', link: '/v0.4.0/zh_CN/type-array' },
+              { text: '结构体', link: '/v0.4.0/zh_CN/type-struct' },
+              { text: 'ADT', link: '/v0.4.0/zh_CN/type-adt' },
+              { text: '元组', link: '/v0.4.0/zh_CN/type-tuple' },
+              { text: '泛型', link: '/v0.4.0/zh_CN/type-generic' },
+              { text: 'Optional', link: '/v0.4.0/zh_CN/type-optional' },
+              { text: '函数', link: '/v0.4.0/zh_CN/functions' },
+              { text: '外部函数', link: '/v0.4.0/zh_CN/function-extern' },
+              { text: '泛型函数', link: '/v0.4.0/zh_CN/function-generic' },
+              { text: '控制流', link: '/v0.4.0/zh_CN/control-flow' },
+              { text: 'match', link: '/v0.4.0/zh_CN/match' },
+              { text: '指针', link: '/v0.4.0/zh_CN/pointers' },
+              { text: '所有权', link: '/v0.4.0/zh_CN/ownership' },
+              { text: '模块系统', link: '/v0.4.0/zh_CN/modules' },
+              { text: '标准库', link: '/v0.4.0/zh_CN/stdlib' },
+              { text: 'I/O 模块', link: '/v0.4.0/zh_CN/stdlib-io' },
+              { text: '内存操作', link: '/v0.4.0/zh_CN/stdlib-mem' },
+              { text: 'OS 接口', link: '/v0.4.0/zh_CN/stdlib-os' },
+              { text: 'HashMap', link: '/v0.4.0/zh_CN/stdlib-hashmap' },
+              { text: '编译器架构', link: '/v0.4.0/zh_CN/compiler' },
+              { text: 'CLI 参考', link: '/v0.4.0/zh_CN/compiler-cli' },
+              { text: '更新日志', link: '/v0.4.0/zh_CN/release-notes' },
+            ]
+          },
           {
             text: 'v0.3.0 — Vix 语言文档',
             collapsed: true,
@@ -295,6 +331,82 @@ export default defineConfig({
         //  },
        ],
 
+        '/v0.4.0/zh_CN/': [
+          {
+            text: 'Vix 语言 v0.4.0',
+            collapsed: false,
+            items: [
+              { text: '什么是 Vix 语言', link: '/v0.4.0/zh_CN/what-is-vix' },
+              { text: '语法参考', link: '/v0.4.0/zh_CN/syntax' },
+            ]
+          },
+          {
+            text: '类型系统',
+            collapsed: false,
+            items: [
+              { text: '类型总览', link: '/v0.4.0/zh_CN/types' },
+              { text: '基本类型', link: '/v0.4.0/zh_CN/type-primitive' },
+              { text: '数组', link: '/v0.4.0/zh_CN/type-array' },
+              { text: '结构体', link: '/v0.4.0/zh_CN/type-struct' },
+              { text: 'ADT', link: '/v0.4.0/zh_CN/type-adt' },
+              { text: '元组', link: '/v0.4.0/zh_CN/type-tuple' },
+              { text: '泛型', link: '/v0.4.0/zh_CN/type-generic' },
+              { text: 'Optional', link: '/v0.4.0/zh_CN/type-optional' },
+            ]
+          },
+          {
+            text: '函数',
+            collapsed: false,
+            items: [
+              { text: '函数', link: '/v0.4.0/zh_CN/functions' },
+              { text: '外部函数', link: '/v0.4.0/zh_CN/function-extern' },
+              { text: '泛型函数', link: '/v0.4.0/zh_CN/function-generic' },
+            ]
+          },
+          {
+            text: '控制流',
+            collapsed: false,
+            items: [
+              { text: '控制流', link: '/v0.4.0/zh_CN/control-flow' },
+              { text: 'match', link: '/v0.4.0/zh_CN/match' },
+            ]
+          },
+          {
+            text: '指针与所有权',
+            collapsed: false,
+            items: [
+              { text: '指针', link: '/v0.4.0/zh_CN/pointers' },
+              { text: '所有权', link: '/v0.4.0/zh_CN/ownership' },
+            ]
+          },
+          {
+            text: '模块系统',
+            collapsed: false,
+            items: [
+              { text: '模块系统', link: '/v0.4.0/zh_CN/modules' },
+            ]
+          },
+          {
+            text: '标准库',
+            collapsed: false,
+            items: [
+              { text: '标准库总览', link: '/v0.4.0/zh_CN/stdlib' },
+              { text: 'I/O 模块', link: '/v0.4.0/zh_CN/stdlib-io' },
+              { text: '内存操作', link: '/v0.4.0/zh_CN/stdlib-mem' },
+              { text: 'OS 接口', link: '/v0.4.0/zh_CN/stdlib-os' },
+              { text: 'HashMap', link: '/v0.4.0/zh_CN/stdlib-hashmap' },
+            ]
+          },
+          {
+            text: '参考',
+            collapsed: false,
+            items: [
+              { text: '编译器架构', link: '/v0.4.0/zh_CN/compiler' },
+              { text: 'CLI 参考', link: '/v0.4.0/zh_CN/compiler-cli' },
+              { text: '更新日志', link: '/v0.4.0/zh_CN/release-notes' },
+            ]
+          },
+        ],
         '/v0.3.0/zh_CN/': [
           {
             text: 'Vix 语言 v0.3.0',
